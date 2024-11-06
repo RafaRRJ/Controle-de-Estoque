@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.menu-esquerda {
+    width: 20%;
+}
+
+.menu-esquerda ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-esquerda ul li {
+    margin-bottom: 10px;
+}
+
+.menu-esquerda ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    display: block;
+}
+
+.menu-esquerda ul li.active a {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.conteudo-principal {
+    width: 55%;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.avisos-direita {
+    width: 25%;
+}
+
+.avisos-direita ul {
+    list-style: none;
+    padding: 0;
+}
+
+.avisos-direita .aviso {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.avisos-direita .aviso.danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.avisos-direita .aviso.warning {
+    background-color: #fff3cd;
+    color: #856404;
+}

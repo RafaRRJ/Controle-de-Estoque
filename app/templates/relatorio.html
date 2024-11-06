@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Estoque</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 200px;
+            background-color: #343a40;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            padding: 15px;
+            text-align: center;
+            display: block;
+            color: white;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+        .sidebar a.active {
+            background-color: #007bff;
+        }
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+        .table-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+        function confirmarExclusao(event) {
+            return confirm("Você realmente deseja excluir esta peça?");
+        }
+    </script>
+</head>
+<body>
+
+    <div class="sidebar">
+        <a href="/relatorio" class="{% if request.path == '/relatorio' %}active{% endif %}">Relatório de Estoque</a>
+        <a href="/entrada" class="{% if request.path == '/entrada' %}active{% endif %}">Registrar Entrada</a>
+        <a href="/saida" class="{% if request.path == '/saida' %}active{% endif %}">Registrar Saída</a>
+    </div>
+
+    <div class="main-content">
+        <div class="table-container mt-4">
+            <h3 class="text-center">Avisos de Estoque Baixo</h3>
+            <ul class="list-group">
+                {% for aviso in avisos %}
+                <li class="list-group-item list-group-item-{{ aviso.tipo }}">{{ aviso.mensagem }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="table-container mt-4">
+            <h2 class="text-center mb-4">Relatório de Estoque</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nome da Peça</th>
+                        <th>Quantidade</th>
+                        <th>Estoque Mínimo</th>
+                        <th>Valor de Venda</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for peca in pecas %}
+                    <tr>
+                        <td>{{ peca.nome }}</td>
+                        <td>{{ peca.estoque }}</td>
+                        <td>{{ peca.estoque_minimo }}</td>
+                        <td>R$ {{ peca.valor_venda | round(2) }}</td>
+                        <td>
+                            <form action="/editar/{{ peca.id }}" method="GET" style="display:inline;">
+                                <button type="submit" class="btn btn-warning btn-sm">Alterar</button>
+                            </form>
+                            <form action="/excluir/{{ peca.id }}" method="POST" style="display:inline;" onsubmit="return confirmarExclusao(event);">
+                                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

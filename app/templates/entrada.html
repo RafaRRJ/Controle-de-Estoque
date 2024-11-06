@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Entrada</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 200px;
+            background-color: #343a40;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            padding: 15px;
+            text-align: center;
+            display: block;
+            color: white;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+        .sidebar a.active {
+            background-color: #007bff;
+        }
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <a href="/relatorio" class="{% if request.path == '/relatorio' %}active{% endif %}">Relatório de Estoque</a>
+        <a href="/entrada" class="{% if request.path == '/entrada' %}active{% endif %}">Registrar Entrada</a>
+        <a href="/saida" class="{% if request.path == '/saida' %}active{% endif %}">Registrar Saída</a>
+    </div>
+
+    <div class="main-content">
+        <h2 class="text-center mb-4">Registrar Entrada de Peça</h2>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-{{ messages[0].category }}">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <div class="mb-3">
+                <label for="nome_peca" class="form-label">Nome da Peça</label>
+                <input type="text" class="form-control" id="nome_peca" name="nome_peca" required>
+            </div>
+            <div class="mb-3">
+                <label for="estoque" class="form-label">Quantidade</label>
+                <input type="number" class="form-control" id="estoque" name="estoque" required>
+            </div>
+            <div class="mb-3">
+                <label for="estoque_minimo" class="form-label">Estoque Mínimo</label>
+                <input type="number" class="form-control" id="estoque_minimo" name="estoque_minimo" required>
+            </div>
+            <div class="mb-3">
+                <label for="valor_custo" class="form-label">Valor de Custo</label>
+                <input type="number" step="0.01" class="form-control" id="valor_custo" name="valor_custo" required>
+            </div>
+            <div class="mb-3">
+                <label for="valor_venda" class="form-label">Valor de Venda</label>
+                <input type="number" step="0.01" class="form-control" id="valor_venda" name="valor_venda" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+
+</body>
+</html>
