@@ -1,6 +1,6 @@
 Controle de Estoque
 
-Sistema de Controle de Estoque desenvolvido em Python, utilizando Flask para o backend e SQLAlchemy para a integração com o banco de dados. O sistema foi criado para atender às necessidades da empresa ELETRISOL, oferecendo funcionalidades de cadastro de peças, controle de entrada e saída de itens e geração de relatórios com alertas de estoque mínimo.
+Sistema de Controle de Estoque desenvolvido como parte do meu Trabalho de Conclusão de Curso (TCC) em Engenharia de Software, utilizando Python com Flask para o backend e SQLAlchemy para a integração com o banco de dados. O sistema foi criado para atender às necessidades da empresa ELETRISOL, oferecendo funcionalidades de cadastro de peças, controle de entrada e saída de itens e visualização de relatórios com alertas de estoque mínimo.
 
 Tecnologias Utilizadas
 Python: Linguagem de programação principal utilizada para o backend.
