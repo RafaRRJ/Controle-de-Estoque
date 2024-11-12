@@ -6,6 +6,7 @@ Python: Linguagem de programação principal utilizada para o backend.
 Flask: Framework web utilizado para o desenvolvimento do backend e gerenciamento de rotas.
 SQLAlchemy: Biblioteca de ORM (Object-Relational Mapping) para integração com o banco de dados.
 HTML, CSS e Bootstrap: Para a construção da interface do usuário responsiva e intuitiva.
+
 Funcionalidades
 Cadastro de Peças: Adicione e gerencie peças no sistema com informações como nome, quantidade, valor de custo e valor de venda.
 Controle de Entradas e Saídas: Registre entradas e saídas de peças do estoque, atualizando automaticamente a quantidade disponível.
